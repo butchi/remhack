@@ -4,6 +4,7 @@ window.licker = window.licker || {};
 
   $(function () {
     (function getSource() {
+      var $codeFrame = $('<div class="code-frame"></div>');
       var $codeLang = $('<div class="code-lang"></div>');
       var $highlight = $('<div class="highlight"></div>');
       var $preCode = $('<pre><code></code></pre>');
@@ -20,7 +21,14 @@ window.licker = window.licker || {};
         head: $('head').html().replace(/\s+$/, '').replace(/\n/g, '\n  '),
         body: $('body').html().replace(/\s+$/, '').replace(/\n/g, '\n  ')
       });
-      $('.block-source--html').append($highlight.clone().append($codeLang.clone().text('index.html'))).append($preCode.clone().text(htmlTxt));
+
+      var $frame = $codeFrame.clone();
+      var $hl = $highlight.clone();
+      var $lang = ($codeLang.clone().text('index.html'))
+      var $code = $preCode.clone().text(htmlTxt);
+      $hl.append($code);
+      $frame.append($lang).append($hl);
+      $('.block-source--html').append($frame);
 
       var cssFileArr = [
         'css/breakpoint.css',
@@ -34,9 +42,14 @@ window.licker = window.licker || {};
           dataType: 'text',
           success: function (res) {
             var cssTxt = res;
-            var $elm = $preCode.clone();
 
-            $('.block-source--css').append($highlight.clone().append($codeLang.clone().text(fileName))).append($preCode.clone().text(cssTxt));
+            var $frame = $codeFrame.clone();
+            var $hl = $highlight.clone();
+            var $lang = ($codeLang.clone().text(fileName))
+            var $code = $preCode.clone().text(cssTxt);
+            $hl.append($code);
+            $frame.append($lang).append($hl);
+            $blockSrcCss.append($frame);
           }
         });
       });
