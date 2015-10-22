@@ -39,15 +39,9 @@ body {
 [class^="block-source--"] {
   overflow: auto;
 
-  font-size: 0.7rem;
-  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;;
-  background: #f7f7f7;
-  color: #000080;
+  font-size: 0.7rem; /* SPでは最小フォントサイズになる */
 }
 
-[class^="block-source--"] pre {
-  padding: 8px 15px;
-}
 
 .image-apple img   {
   width: 30rem;
