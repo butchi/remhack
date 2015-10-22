@@ -10,7 +10,7 @@
   <meta name="generator" content="Brackets">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta property="fb:app_id" content="">
-  <meta property="og:title" content="rem Hack">
+  <meta property="og:title" content="rem単位を用いたレスポンシブ対応ページの実装デモ">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://butchi.github.io/remhack/">
   <meta property="og:image" content="">
@@ -28,8 +28,8 @@
   <div id="fb-root"></div>
   <div class="wrapper">
     <header class="global-header">
-      <h1 class="title" data-heading-level="2">rem Hack</h1>
-      <nav role="navigation">
+      <h1 class="title" data-heading-level="1">rem Hack</h1>
+      <nav>
         <ul>
           <li><a href="#introduction">はじめに</a></li>
           <li><a href="#main-contents">（本論）</a></li>
@@ -38,35 +38,92 @@
       </nav>
     </header>
 
-    <main role="main" class="main">
-      <article role="article" class="article">
+    <main class="main">
+      <article class="article">
+        <h2 class="heading" data-heading-level="2">rem単位を用いたレスポンシブ対応ページの実装デモ</h2>
 
         <header></header>
 
-        <section class="sec-introduction" id="introduction">
-          <h1 class="heading" data-heading-level="2">はじめに</h1>
+        <section class="section--introduction" id="introduction">
+          <h2 class="heading" data-heading-level="3">はじめに</h2>
+          <p>このサイトがデモです。</p>
+          <p>ポイントは1つだけです。全てのサイズ指定にrem単位を用いることにより、メディアクエリ指定がhtmlに対するfont-sizeのみの変更で済むことです。</p>
         </section>
 
-        <section class="sec-main" id="main-contents">
-          <h1 class="heading" data-heading-level="2">（本論）</h1>
+        <section class="section--background" id="background">
+          <h2 class="heading" data-heading-level="3">きっかけ</h2>
 
+          <p><time datetime="2015-09">2015年9月</time>ごろにAppleサイトのサポートページを開いたところ、大きな表示崩れが生じていました。</p>
+          <figure class="image-apple">
+            <img src="img/screenshot-apple-support.png" alt="Appleサイトのバグ" class="img_width_full">
+            <figcaption>Appleサイトのバグ(左: IE Edgeでの表示 右: Chromeでの表示) <br>画像提供元: <a href="http://did2memo.net/2015/09/18/chrome-apple-help-page-rem-bug/">情報科学屋さんを目指す人のメモ</a></figcaption>
+          </figure>
+          
+          <p>CSSを解読したところ、要素のところどころにrem単位を用いたサイズ指定が施されていました。</p>
+          <p>バグの原因（後述）を回避した上で、remを用いることでメリットがあるのではないかと思い、本記事を執筆しました。</p>
+        </section>
 
-        <section class="sec-source">
-          <h1 class="heading" data-heading-level="2">ソース</h1>
-          <section class="source--html">
-            <h1 class="heading" data-heading-level="3">HTML</h1>
-            <div class="block-source--html"></div>
+        <section class="section--about-rem" id="about-rem">
+          <h2 class="heading" data-heading-level="3">rem単位とは</h2>
+          <p>CSSには元来emという単位がありました。remはCSS3で導入され、HTML要素に指定されたフォントサイズが1remに相当します（remはroot emの略）。</p>
+        </section>
+
+        <section class="section--cause" id="cause">
+          <h2 class="heading" data-heading-level="3">バグの原因</h2>
+
+          <p>Appleサイトでは、remのピクセル数として1pxが指定されていました。</p>
+
+          <div class="code-frame">
+            <div class="highlight">
+              <pre><code>
+html {
+  font-size: 1px;
+}
+              </code></pre>
+            </div>
+          </div>
+
+          <p>これにより、たとえば50remは50pxとして扱われるはずです。</p>
+          <p>FirefoxやInternet Explorerなどではその通りなのですが、Chromeではそうならないというのがポイントです。</p>
+          <section class="subsection--chrome-min-fz">
+            <h2 class="heading" data-heading-level="4">Chromeの最小フォントサイズ問題</h2>
+            <p>Chromeには、最小フォントサイズというブラウザー設定が存在し、デフォルトで10pxに指定されています。</p>
+            <p>ブラウザーの設定により、最小フォントサイズを下げることはできますが、それでも最低6pxまでしか下げられません。</p>
+            <figure>
+              <img src="img/screenshot-minimum-font-size--10px.png" alt="Minimum font size" class="img_width_full">
+              <figcaption>最小フォントサイズ10px（デフォルト）</figcaption>
+            <figure>
+              <img src="img/screenshot-minimum-font-size--6px.png" alt="Minimum font size" class="img_width_full">
+              <figcaption>最小フォントサイズ6px（最小）</figcaption>
+            </figure>
+            <p>よって、html要素のフォントサイズに1pxを指定しても、デフォルトのChromeでは1rem = 10pxと扱われてしまうのです。（ただし見た感じだとfont-sizeだけは1rem = 1pxとして扱われる模様）</p>
+            <p>なお、htmlのフォントサイズを10px以上で指定しながらremで指定したサイズが10pxを下回る場合（1rem = 10px, 0.5rem→5pxなど）は、テキスト以外なら有効のようです。</p>
           </section>
 
+          <p>1rem = 1pxということになるので、なぜAppleはpxを使わずremを使ったのかが謎です（後述のズームコントロールを視野に入れていたのでしょうかね？）。</p>
+        </section>
+
+        <section class="section--" id="">
+          <h2 class="heading" data-heading-level="3"></h2>
+        </section>
+
+        <section class="section--source">
+          <h2 class="heading" data-heading-level="3">ソース</h2>
           <section class="source--css">
-            <h1 class="heading" data-heading-level="3">CSS</h1>
+            <h2 class="heading" data-heading-level="4">CSS</h2>
             <div class="block-source--css"></div>
           </section>
 
           <p class="note">※一部CSSとJSは本筋と関係ないので割愛</p>
         </section>
-        <section class="sec-conclusion" id="conclusion">
-          <h1 class="heading" data-heading-level="2">まとめ</h1>
+
+        <section class="section--application" id="application">
+          <h2 class="heading" data-heading-level="3">その他の応用</h2>
+          <p>ズームコントロールへ応用ができそうです。（zoom、transformとの比較）</p>
+        </section>
+
+        <section class="section--conclusion" id="conclusion">
+          <h2 class="heading" data-heading-level="3">まとめ</h2>
         </section>
 
         <footer></footer>
@@ -74,7 +131,7 @@
       </article>
     </main>
 
-    <footer role="contentinfo" class="global-footer">
+    <footer class="global-footer">
       <small>created by 物智 (IWABUCHI Yu(u)ki)</small>
     </footer>
   </div>
