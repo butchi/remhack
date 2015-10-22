@@ -1,5 +1,5 @@
 /* Qiita style */
-[class^="block-source--"] .code-frame {
+.code-frame {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -7,9 +7,13 @@
   margin: 1em 0;
   background-color: #f7f7f7;
   line-height: 0;
+
+  overflow: auto;
+
+  font-size: 0.7rem; /* 1remを下回ってるのでSP Chromeでは最小フォントサイズ(10px)になる */
 }
 
-[class^="block-source--"] .code-lang {
+.code-frame .code-lang {
   color: #555;
   display: inline-block;
   padding: 3px 6px;
@@ -20,7 +24,7 @@
   font-weight: 400;
 }
 
-[class^="block-source--"] pre {
+.code-frame pre {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   border-bottom-right-radius: 3px;

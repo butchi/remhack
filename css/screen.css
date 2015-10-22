@@ -14,6 +14,12 @@ body {
   font-size: 1rem;
 }
 
+img.img_width_full {
+  width: 30rem;
+  height: auto;
+}
+
+
 .global-header {
   padding: 0 1rem;
 
@@ -24,7 +30,17 @@ body {
   font-size: 2rem;
 }
 
+[data-heading-level="3"] {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.5rem;
 
+  border-left: 0.8rem solid #666;
+  border-bottom: 1px solid #666;
+}
+
+[data-heading-level="3"] + p {
+  margin-top: 0.5rem;
+}
 
 .main {
   padding: 0 1rem;
@@ -32,21 +48,14 @@ body {
   background: #fff;
 }
 
+.article {
+  padding: 20px 0;
+}
+
 .article .heading {
   font-size: 1.5rem;
 }
 
-[class^="block-source--"] {
-  overflow: auto;
-
-  font-size: 0.7rem; /* SPでは最小フォントサイズになる */
-}
-
-
-.image-apple img   {
-  width: 30rem;
-  height: auto;
-}
 
 .global-footer {
   padding: 0 10rem;
