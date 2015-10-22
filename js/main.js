@@ -59,7 +59,7 @@ window.licker = window.licker || {};
         });
       }
 
-      renderHtml();
+      // renderHtml();
       renderCss();
     }());
   });
