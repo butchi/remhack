@@ -1,18 +1,21 @@
 body {
-  background: #ccc;
+  /* from http://www.horihavalabo.jp/cssgen/ */
+  -webkit-background-size: 10px 10px;
+  -moz-background-size: 10px 10px;
+  background-size: 10px 10px;
+  background-color: #9bf;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, #9ef), color-stop(.5, transparent), to(transparent));
+  background-image: -moz-linear-gradient(#9ef 50%, transparent 50%, transparent);
+  background-image: -o-linear-gradient(#9ef 50%, transparent 50%, transparent);
+  background-image: linear-gradient(#9ef 50%, transparent 50%, transparent);
+
+  min-width: 320px;
 
   font-size: 1rem;
 }
 
-.wrapper {
-  position: relative;
-  width: 32rem;
-  left: 50%;
-  margin-left: -16rem;
-}
-
 .global-header {
-  padding: 0 10px;
+  padding: 0 1rem;
 
   background: #999;
 }
@@ -21,8 +24,10 @@ body {
   font-size: 2rem;
 }
 
+
+
 .main {
-  padding: 0 10px;
+  padding: 0 1rem;
 
   background: #fff;
 }
@@ -31,8 +36,26 @@ body {
   font-size: 1.5rem;
 }
 
+[class^="block-source--"] {
+  overflow: auto;
+
+  font-size: 0.7rem;
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;;
+  background: #f7f7f7;
+  color: #000080;
+}
+
+[class^="block-source--"] pre {
+  padding: 8px 15px;
+}
+
+.image-apple img   {
+  width: 30rem;
+  height: auto;
+}
+
 .global-footer {
-  padding: 0 10px;
+  padding: 0 10rem;
 
   background: #999;
 }

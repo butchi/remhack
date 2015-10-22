@@ -3,10 +3,22 @@ html {
   font-size: 20px;
 }
 
+.wrapper {
+  position: relative;
+  width: 32rem;
+  box-shadow: 1px 1px 3px;
+}
+
 /* SPスクリーンサイズでは1倍の単位 */
 @media screen and (max-width: 640px)
 {
   html {
     font-size: 10px;
+  }
+
+  .wrapper {
+    position: relative;
+    left: 50%;
+    margin-left: -16rem;
   }
 }
