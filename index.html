@@ -46,45 +46,48 @@
 
         <section class="section--introduction" id="introduction">
           <h2 class="heading" data-heading-level="3">はじめに</h2>
-          <p>このサイトがデモです。</p>
-          <p>ポイントは1つだけです。全てのサイズ指定にrem単位を用いることにより、メディアクエリ指定がhtmlに対するfont-sizeのみの変更で済むことです。</p>
+          <p>本技術のポイントは1つだけです。レスポンシブにしたい要素すべてのサイズ指定にrem単位を用いることにより、普通にやると面倒なメディアクエリについての記述がhtmlに対するfont-sizeのみの変更で済むことです。</p>
+          <p><strong>このサイトがデモです。</strong></p>
         </section>
 
         <section class="section--background" id="background">
           <h2 class="heading" data-heading-level="3">きっかけ</h2>
 
-          <p><time datetime="2015-09">2015年9月</time>ごろにAppleサイトのサポートページを開いたところ、大きな表示崩れが生じていました。</p>
+          <p><time datetime="2015-09">2015年9月</time>ごろにAppleサイトのサポートページ（<a href="https://support.apple.com/ja-jp/HT202346" target="_blank">https://support.apple.com/ja-jp/HT...</a>）を開いたところ、大きな表示崩れが生じていました。</p>
           <figure class="image-apple">
             <img src="img/screenshot-apple-support.png" alt="Appleサイトのバグ" class="img_width_full">
             <figcaption>Appleサイトのバグ(左: IE Edgeでの表示 右: Chromeでの表示) <br>画像提供元: <a href="http://did2memo.net/2015/09/18/chrome-apple-help-page-rem-bug/">情報科学屋さんを目指す人のメモ</a></figcaption>
           </figure>
           
           <p>CSSを解読したところ、要素のところどころにrem単位を用いたサイズ指定が施されていました。</p>
-          <p>バグの原因（後述）を回避した上で、remを用いることでメリットがあるのではないかと思い、本記事を執筆しました。</p>
+          <p>これは単なる凡ミスではないと考えた私は、バグの原因（後述）を回避した上で、remを用いることでメリットがあるのではないかと思い、本記事を執筆しました。</p>
         </section>
 
         <section class="section--about-rem" id="about-rem">
           <h2 class="heading" data-heading-level="3">rem単位とは</h2>
-          <p>CSSには元来emという単位がありました。remはCSS3で導入され、HTML要素に指定されたフォントサイズが1remに相当します（remはroot emの略）。</p>
+          <p>CSSには元来emや%といった「親要素の文字サイズ」に対して相対的にサイズ指定をする単位がありました。一方、絶対的なサイズ指定をするpxもよく使われています。そんな中、remという新しい単位がCSS3で導入されました。HTML要素（ルート）に指定されたフォントサイズが1remに相当します（remはroot emの略）。</p>
+          <p>参考: <a href="http://allabout.co.jp/gm/gc/402548/" target="_blank">CSS3の新単位remで、文字サイズの指定を分かりやすく [ホームページ作成] All About</a></p>
+          <p>参考: <a href="http://www.w3schools.com/cssref/css_units.asp" target="_blank">CSS Units</a>（英語）</p>
         </section>
 
         <section class="section--cause" id="cause">
           <h2 class="heading" data-heading-level="3">バグの原因</h2>
 
-          <p>Appleサイトでは、remのピクセル数として1pxが指定されていました。</p>
+          <p>Appleサイトでは、1remにあたるフォントサイズとして1pxが指定されていました。</p>
 
           <div class="code-frame">
             <div class="highlight">
               <pre><code>
 html {
-  font-size: 1px;
+	font-size:1px
 }
               </code></pre>
             </div>
           </div>
 
+          <p><a href="https://km.support.apple.com/static_resources/css/cds_article.css" target="_blank">該当CSSファイル</a>（※現在はremに関する記述なし）</p>
           <p>これにより、たとえば50remは50pxとして扱われるはずです。</p>
-          <p>FirefoxやInternet Explorerなどではその通りなのですが、Chromeではそうならないというのがポイントです。</p>
+          <p>たしかにFirefoxやInternet Explorerなどではその通りなのですが、Chromeではそうならないというのがポイントです（Safariも、<a href="http://applech2.com/archives/46301682.html" target="_blank">設定</a>によっては崩れます）。</p>
           <section class="subsection--chrome-min-fz">
             <h2 class="heading" data-heading-level="4">Chromeの最小フォントサイズ問題</h2>
             <p>Chromeには、最小フォントサイズというブラウザー設定が存在し、デフォルトで10pxに指定されています。</p>
@@ -103,8 +106,15 @@ html {
           <p>1rem = 1pxということになるので、なぜAppleはpxを使わずremを使ったのかが謎です（後述のズームコントロールを視野に入れていたのでしょうかね？）。</p>
         </section>
 
-        <section class="section--" id="">
-          <h2 class="heading" data-heading-level="3"></h2>
+        <section class="section--rem-hack" id="rem-hack">
+          <h2 class="heading" data-heading-level="3">提案: remハック</h2>
+          <p>remをハックして何か便利なことがないかと考えた結果、最も有用なのは拡大を伴うレイアウトで、特にPC・スマホのレイアウト切替時のサイズ変更に役立つと考えました。</p>
+
+          <section class="subsection--responsive">
+            <h2 class="heading" data-heading-level="4">レスポンシブ対応</h2>
+            <p>HTMLが単一ソースで、画面サイズに応じてレイアウトが切り替わる技術のことをレスポンシブWebデザインと呼びます。</p>
+          </section>
+
         </section>
 
         <section class="section--source">
@@ -132,7 +142,7 @@ html {
     </main>
 
     <footer class="global-footer">
-      <small>created by 物智 (IWABUCHI Yu(u)ki)</small>
+      <small>created by 物智 (<a href="http://butchi.jp/" target="_blank">IWABUCHI Yu(u)ki)</a></small>
     </footer>
   </div>
 
