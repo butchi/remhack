@@ -65,7 +65,7 @@ p + p {
   border-left: 0.8rem solid #666;
   border-bottom: 0.1rem solid #666;
 
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 [data-heading-level="3"] + p {
