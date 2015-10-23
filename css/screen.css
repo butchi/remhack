@@ -20,8 +20,12 @@ img.img_width_full {
 }
 
 strong {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
+}
+
+em {
+  font-weight: bold;
 }
 
 p {
