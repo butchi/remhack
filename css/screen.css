@@ -19,6 +19,11 @@ img.img_width_full {
   height: auto;
 }
 
+strong {
+    color: red;
+    font-weight: bold;
+}
+
 p {
   line-height: 1.5;
 }
