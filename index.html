@@ -30,9 +30,24 @@
     <header class="global-header">
       <h1 class="title" data-heading-level="1">rem Hack</h1>
       <nav>
+        <h2 class="heading" data-heading-level="2">目次</h2>
         <ul>
           <li><a href="#introduction">はじめに</a></li>
-          <li><a href="#main-contents">（本論）</a></li>
+          <li><a href="#background">きっかけ</a></li>
+          <li><a href="#about-rem">rem単位とは</a></li>
+          <li>
+            <a href="#cause">バグの原因</a>
+            <ul>
+              <li><a href="#chrome-min-fz">Chromeの最小フォントサイズ問題</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#rem-hack">提案: remハック</a>
+            <ul>
+              <li><a href="#responsive">レスポンシブ対応</a></li>
+            </ul>
+          </li>
+          <li><a href="#source">ソース</a></li>
           <li><a href="#conclusion">まとめ</a></li>
         </ul>
       </nav>
@@ -88,7 +103,7 @@ html {
           <p><a href="https://km.support.apple.com/static_resources/css/cds_article.css" target="_blank">該当CSSファイル</a>（※現在はremに関する記述なし）</p>
           <p>これにより、たとえば50remは50pxとして扱われるはずです。</p>
           <p>たしかにFirefoxやInternet Explorerなどではその通りなのですが、Chromeではそうならないというのがポイントです（Safariも、<a href="http://applech2.com/archives/46301682.html" target="_blank">設定</a>によっては崩れます）。</p>
-          <section class="subsection--chrome-min-fz">
+          <section class="subsection--chrome-min-fz" id="chrome-min-fz">
             <h2 class="heading" data-heading-level="4">Chromeの最小フォントサイズ問題</h2>
             <p>Chromeには、最小フォントサイズというブラウザー設定が存在し、デフォルトで10pxに指定されています。</p>
             <p>ブラウザーの設定により、最小フォントサイズを下げることはできますが、それでも最低6pxまでしか下げられません。</p>
@@ -111,14 +126,14 @@ html {
           <h2 class="heading" data-heading-level="3">提案: remハック</h2>
           <p>remをハックして何か便利なことがないかと考えた結果、最も有用なのは拡大を伴うレイアウトで、特にPC・スマホのレイアウト切替時のサイズ変更に役立つと考えました。</p>
 
-          <section class="subsection--responsive">
+          <section class="subsection--responsive" id="responsive">
             <h2 class="heading" data-heading-level="4">レスポンシブ対応</h2>
             <p>HTMLが単一ソースで、画面サイズに応じてレイアウトが切り替わる技術のことをレスポンシブWebデザインと呼びます。</p>
           </section>
 
         </section>
 
-        <section class="section--source">
+        <section class="section--source" id="source">
           <h2 class="heading" data-heading-level="3">ソース</h2>
           <section class="source--css">
             <h2 class="heading" data-heading-level="4">CSS</h2>
