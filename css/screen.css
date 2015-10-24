@@ -162,15 +162,6 @@ article > .heading {
   padding: 1rem 0;
 }
 
-.source--css > .heading {
-  display: inline-block;
-  margin: 1rem 0 0;
-  padding: 0.25rem 0.5rem;
-
-  background: #666;
-  color: #fff;
-}
-
 .global-footer {
   padding: 1rem 1rem;
 

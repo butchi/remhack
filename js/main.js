@@ -33,34 +33,33 @@ window.licker = window.licker || {};
         $('.block-source--html').append($frame);
       }
 
-      function renderCss () {
-        var cssFileArr = [
-          'css/breakpoint.css',
-          'css/screen.css'
-        ];
+      function renderAssets (fileArr) {
 
-        var $blockSrcCss = $('.block-source--css');
-        cssFileArr.forEach(function (fileName) {
+        var $blockSrc = $('.block-source');
+        fileArr.forEach(function (fileName) {
           $.ajax({
             url: fileName,
             dataType: 'text',
             success: function (res) {
-              var cssTxt = res;
+              var srcTxt = res;
 
               var $frame = $codeFrame.clone();
               var $hl = $highlight.clone();
               var $lang = ($codeLang.clone().text(fileName))
-              var $code = $preCode.clone().text(cssTxt);
+              var $code = $preCode.clone().text(srcTxt);
               $hl.append($code);
               $frame.append($lang).append($hl);
-              $blockSrcCss.append($frame);
+              $blockSrc.append($frame);
             }
           });
         });
       }
 
-      // renderHtml();
-      renderCss();
+      renderAssets([
+        'css/breakpoint.css',
+        'css/screen.css',
+        'js/fit-window.js'
+      ]);
     }());
   });
 }(window.licker, window.jQuery));
