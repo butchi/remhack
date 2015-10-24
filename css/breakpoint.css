@@ -10,8 +10,7 @@ html {
 }
 
 /* SPスクリーンサイズでは1倍の単位 */
-@media screen and (max-width: 640px)
-{
+@media screen and (max-width: 640px) {
   html {
     font-size: 10px;
   }
