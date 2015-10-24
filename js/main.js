@@ -35,7 +35,7 @@ window.licker = window.licker || {};
 
       function renderAssets (fileArr) {
 
-        var $blockSrc = $('.block-source');
+        var $blockSrc = $('.block-source--list');
         fileArr.forEach(function (fileName) {
           $.ajax({
             url: fileName,
