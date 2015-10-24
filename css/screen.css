@@ -23,6 +23,19 @@ ul > li > ul {
   padding-left: 1rem;
 }
 
+figure {
+  margin: 2rem 0;
+}
+
+figcaption {
+  margin: 1rem 0 0;
+
+  font-size: 0.7rem;
+  line-height: 1.5;
+
+  color: #666;
+}
+
 img.img_width_full {
   width: 30rem;
   height: auto;
@@ -146,7 +159,7 @@ article > .heading {
 }
 
 .article {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .source--css > .heading {
