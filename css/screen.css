@@ -177,3 +177,16 @@ article > .heading {
   background: #666;
   color: #fff;
 }
+
+
+.control-fit-window {
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  padding: 10px;
+
+  background-color: rgba(0, 0, 0, 0.4);
+
+  font-size: 15px;
+}
