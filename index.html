@@ -124,22 +124,29 @@ html {
 
         <section class="section--rem-hack" id="rem-hack">
           <h2 class="heading" data-heading-level="3">提案: remハック</h2>
-          <p>remをハックして何か便利なことがないかと考えた結果、最も有用なのは拡大を伴うレイアウトで、特にPC・スマホのレイアウト切替時のサイズ変更に役立つと考えました。</p>
+          <p>remをハックして何か便利なことがないかと考えた結果、最も有用なのは拡大を伴うレイアウトで、特にPC・スマホのレイアウト切替時のサイズ変更に役立つと閃きました。</p>
 
           <section class="subsection--responsive" id="responsive">
             <h2 class="heading" data-heading-level="4">レスポンシブ対応</h2>
             <p>HTMLが単一ソースで、画面サイズに応じてレイアウトが切り替わる技術のことをレスポンシブWebデザインと呼びます。</p>
           </section>
 
+          <p>コンテンツ幅320px、ルート単位10pxの場合、画面にフィットさせる場合は以下のようにしていするとフィットできます。</p>
+
           <div class="code-frame">
             <div class="highlight">
               <pre><code>
 html {
-font-size: calc(100vw / 320 * 10);
+  font-size: calc(100vw / 320 * 10);
 }
               </code></pre>
             </div>
           </div>
+
+          <p>calcが安心できない場合は数値で<code>3.13vw</code>としましょう。</p>
+          <p>なお、vwはスクロールバーを考慮しないようで、対応ブラウザーもまだ少ないため、今のところCSSを使わずJavaScriptでリサイズのイベントに従って動的に変更し、フォールバックとしてvwを使うことをお勧めします（実装方法は js/fit-window.js を参照）。</p>
+
+          <p>また、PCで640px幅、スマホで320px幅というようなレイアウトに対しても本手法は有用です。以下のようにメディアクエリを使えば表示サイズを切り替えられます。</p>
 
           <div class="code-frame">
             <div class="highlight">
