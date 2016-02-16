@@ -170,6 +170,27 @@ article > .heading {
   color: #fff;
 }
 
+.block-share {
+  padding: 0 1rem 1rem;
+
+  background: #666;
+}
+
+.list-share {
+  list-style: none;
+
+  font-size: 0;
+}
+
+.list-share__item {
+  display: inline-block;
+
+  vertical-align: top;
+}
+
+.list-share__item + .list-share__item {
+  margin-left: 10px;
+}
 
 .control-fit-window {
   position: fixed;
