@@ -6,7 +6,7 @@ html {
 .wrapper {
   position: relative;
   width: 32rem;
-  box-shadow: 1px 1px 3px;
+  box-shadow: 1px 0px 3px;
 }
 
 /* SPスクリーンサイズでは1倍の単位 */
