@@ -54,6 +54,8 @@
             <a href="#rem-hack">提案: remハック</a>
             <ul>
               <li><a href="#responsive">レスポンシブ対応</a></li>
+              <li><a href="#conventional">従来法</a></li>
+              <li><a href="#propose">提案法</a></li>
             </ul>
           </li>
           <li><a href="#source">ソース</a></li>
@@ -141,28 +143,72 @@ html {
             <p>HTMLが単一ソースで、画面サイズに応じてレイアウトが切り替わる技術のことをレスポンシブWebデザインと呼びます。</p>
           </section>
 
-          <p>コンテンツ幅320px、ルート単位10pxの場合、画面にフィットさせる場合は以下のようにしていするとフィットできます。</p>
+          <section class="subsection--conventional" id="conventional">
+            <h2 class="heading" data-heading-level="4">従来法</h2>
 
-          <p><small>ただし、windowのwidthを元にremサイズを反映させる実装をすると、ウィンドウのズームが一定率無効になる挙動を確認しております。</small></p>
+            <section class="subsubsection--javascript">
+              <h2 class="heading" data-heading-level="5">JavaScriptによるCSS操作</h2>
 
-          <div class="code-frame">
-            <div class="highlight">
-              <pre><code>
+              <p>リサイズに応じてwidth・heightなどのCSSプロパティを書き換える手法です。</p>
+              <p>ただし、工数がかかるためかあまり見かけません。</p>
+            </section>
+
+            <section class="subsubsection--zoom">
+              <h2 class="heading" data-heading-level="5">zoomプロパティ</h2>
+
+              <p>要素の拡大率を変更させてコンテンツサイズを変化させられます。</p>
+              <p>Firefoxでzoomプロパティが実装されていないのが最大の欠点です。</p>
+            </section>
+
+            <section class="subsubsection--transform">
+              <h2 class="heading" data-heading-level="5">CSS transform</h2>
+
+              <p>要素全体を拡大縮小する方法です。（以下は例）</p>
+
+              <div class="code-frame">
+                <div class="highlight">
+                  <pre>
+                    <code>
+.wrapper {
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+                    </code>
+                  </pre>
+                </div>
+              </div>
+
+              <p>全体を縮小することにより手っ取り早くレスポンシブにできますが、いいね！ボタン等のiframe要素なども同時に縮小されてしまいます。</p>
+
+              <p>この方法だと、また、DOM要素の大きさに影響を与えないため、レイアウトに不具合が生じる欠点もあります。</p>
+            </section>
+          </section>
+
+          <section class="subsection--propose" id="propose">
+            <h2 class="heading" data-heading-level="4">提案法</h2>
+  
+            <p>コンテンツ幅320px、ルート単位10pxの場合、画面にフィットさせる場合は以下のようにしていするとフィットできます。</p>
+
+            <p><small>ただし、windowのwidthを元にremサイズを反映させる実装をすると、ウィンドウのズームが一定率無効になる挙動を確認しております。</small></p>
+
+            <div class="code-frame">
+              <div class="highlight">
+                <pre><code>
 html {
   font-size: calc(100vw / 320 * 10);
 }
-              </code></pre>
+                </code></pre>
+              </div>
             </div>
-          </div>
 
-          <p>calcが安心できない場合は数値で<code>3.13vw</code>としましょう。</p>
-          <p>なお、vwはスクロールバーを考慮しないようで、対応ブラウザーもまだ少ないため、今のところCSSを使わずJavaScriptでリサイズのイベントに従って動的に変更し、フォールバックとしてvwを使うことをお勧めします（実装方法は js/fit-window.js を参照）。</p>
+            <p>calcが安心できない場合は数値で<code>3.13vw</code>としましょう。</p>
+            <p>なお、vwはスクロールバーを考慮しないようで、対応ブラウザーもまだ少ないため、今のところCSSを使わずJavaScriptでリサイズのイベントに従って動的に変更し、フォールバックとしてvwを使うことをお勧めします（実装方法は js/fit-window.js を参照）。</p>
 
-          <p>また、PCで640px幅、スマホで320px幅というようなレイアウトに対しても本手法は有用です。以下のようにメディアクエリを使えば表示サイズを切り替えられます。</p>
+            <p>また、PCで640px幅、スマホで320px幅というようなレイアウトに対しても本手法は有用です。以下のようにメディアクエリを使えば表示サイズを切り替えられます。</p>
 
-          <div class="code-frame">
-            <div class="highlight">
-              <pre><code>
+            <div class="code-frame">
+              <div class="highlight">
+                <pre><code>
 html {
   font-size: 20px;
 }
@@ -172,9 +218,10 @@ html {
     font-size: 10px;
   }
 }
-              </code></pre>
+                </code></pre>
+              </div>
             </div>
-          </div>
+          </section>
 
         </section>
 

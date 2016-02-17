@@ -173,7 +173,13 @@ article > .heading {
   border-right: 2rem solid #666;
 }
 
+/* サブサブセクション見出し */
+[class^="subsubsection--"] > .heading {
+  margin: 2rem 0 1rem;
 
+  font-size: large;
+  font-weight: bold;
+}
 
 .main {
   padding: 0 1rem;
