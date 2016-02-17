@@ -64,12 +64,17 @@ table > tbody > tr > td {
 }
 
 th, td {
-  height: 3rem;
-  line-height: 3rem;
+  line-height: 1.4;
 }
 
 th {
+  padding: 0.5rem 0;
+
   background-color: #ccc;
+}
+
+td {
+  padding: 1rem 0;
 }
 
 p {
