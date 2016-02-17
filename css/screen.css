@@ -50,6 +50,10 @@ em {
   font-weight: bold;
 }
 
+small {
+  color: #999;
+}
+
 p {
   line-height: 1.5;
 }
