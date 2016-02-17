@@ -54,6 +54,24 @@ small {
   color: #999;
 }
 
+table {
+  width: 100%;
+}
+
+table > tbody > tr > th,
+table > tbody > tr > td {
+  border-color: #999;
+}
+
+th, td {
+  height: 3rem;
+  line-height: 3rem;
+}
+
+th {
+  background-color: #ccc;
+}
+
 p {
   line-height: 1.5;
 }
@@ -161,6 +179,10 @@ article > .heading {
   padding: 0 1rem;
 
   background: #fff;
+}
+
+.table-browser-support {
+  text-align: center;
 }
 
 .article {
