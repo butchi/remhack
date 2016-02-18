@@ -183,6 +183,26 @@ html {
               <p>この方法だと、また、DOM要素の大きさに影響を与えないため、レイアウトに不具合が生じる欠点もあります。</p>
             </section>
 
+            <section class="subsubsection--viewport">
+              <h2 class="heading" data-heading-level="5">viewport設定</h2>
+
+              <p>PC・スマホ両対応でよく行われる方式です。</p>
+
+              <p>PCで見た時に640px幅のレイアウトで作り、viewport設定がdevice-widthになっていたらはみ出るのですが、以下のようにwidthを640pxに固定します。</p>
+
+              <div class="code-frame">
+                <div class="highlight">
+                  <pre>
+                    <code>
+&lt;meta name="viewport" content="width=640px"&gt;
+                    </code>
+                  </pre>
+                </div>
+              </div>
+
+              <p>transformを使ったとき同様、全体的に要素が小さくなってしまう欠点があります。</p>
+            </section>
+
             <section class="subsubsection--media-query">
               <h2 class="heading" data-heading-level="5">メディアクエリによるCSS</h2>
 
