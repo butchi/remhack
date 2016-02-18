@@ -206,6 +206,10 @@ article > .heading {
   padding: 1rem 0;
 }
 
+.block-comment iframe {
+  width: 30rem !important;
+}
+
 .global-footer {
   padding: 1rem 1rem;
 
