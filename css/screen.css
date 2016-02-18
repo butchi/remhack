@@ -61,6 +61,8 @@ table {
 table > tbody > tr > th,
 table > tbody > tr > td {
   border-color: #999;
+
+  vertical-align: middle;
 }
 
 th, td {
@@ -194,6 +196,10 @@ article > .heading {
 
 .table-browser-support {
   text-align: center;
+}
+
+.table-browser-support th {
+  font-size: 0.8rem;
 }
 
 .article {
