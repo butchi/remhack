@@ -65,6 +65,18 @@
       </nav>
     </header>
 
+    <aside class="block-share">
+      <ul class="list-share">
+        <li class="list-share__item item--facebook">
+          <div class="fb-like" data-href="http://butchi.github.io/remhack/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        </li>
+        <li class="list-share__item item--twitter">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="remhack">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </li>
+      </ul>
+    </aside>
+
     <main class="main">
       <article class="article">
         <h2 class="heading" data-heading-level="2">rem単位を用いたレスポンシブ対応ページの実装デモ</h2>
@@ -86,7 +98,7 @@
           <p><time datetime="2015-09">2015年9月</time>ごろにAppleサイトのサポートページ（<a href="https://support.apple.com/ja-jp/HT202346" target="_blank">https://support.apple.com/ja-jp/HT...</a>）を開いたところ、大きな表示崩れが生じていました。</p>
           <figure class="image-apple">
             <img src="img/screenshot-apple-support.png" alt="Appleサイトのバグ" class="img_width_full">
-            <figcaption>Appleサイトのバグ(左: IE Edgeでの表示 右: Chromeでの表示) <br>画像提供元: <a href="http://did2memo.net/2015/09/18/chrome-apple-help-page-rem-bug/">情報科学屋さんを目指す人のメモ</a></figcaption>
+            <figcaption>Appleサイトのバグ(左: IE Edgeでの表示 右: Chromeでの表示) <br>画像提供元: <a href="http://did2memo.net/2015/09/18/chrome-apple-help-page-rem-bug/" target="_blank">情報科学屋さんを目指す人のメモ</a></figcaption>
           </figure>
           
           <p>CSSを解読したところ、要素のところどころにrem単位を用いたサイズ指定が施されていました。</p>
@@ -203,7 +215,7 @@ html {
                 </div>
               </div>
 
-              <p>事例: <a href="http://www.kayac.com/service/point/webgl/">WebGLのサイト（iPhone対応の3Dコンテンツ）つくりませんか？ 面白法人カヤック</a></p>
+              <p>事例: <a href="http://www.kayac.com/service/point/webgl/" target="_blank">WebGLのサイト（iPhone対応の3Dコンテンツ）つくりませんか？ 面白法人カヤック</a></p>
 
               <p>transformを使ったとき同様、全体的に要素が小さくなってしまう欠点があります。</p>
             </section>
@@ -215,7 +227,7 @@ html {
 
               <p>しかし、それなりに工数がかかるのが難点です。</p>
 
-              <p>事例: <a href="https://sumika.me/koyatenjijo/">日本初！小屋展示場OPEN by SuMiKa</a></p>
+              <p>事例: <a href="https://sumika.me/koyatenjijo/" target="_blank">日本初！小屋展示場OPEN by SuMiKa</a></p>
 
             </section>
 
@@ -321,7 +333,7 @@ html {
 
           <p>ズームコントロールへの応用ができそうです。</p>
 
-          <p><a href="https://css-tricks.com/">CSS-Tricks</a>の<a href="https://css-tricks.com/rems-ems/">こちらの記事</a>では、remとemを併用してグローバル・ローカルな領域でブロックサイズ制御をするデモが公開されています。</p>
+          <p><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a>の<a href="https://css-tricks.com/rems-ems/" target="_blank">こちらの記事</a>では、remとemを併用してグローバル・ローカルな領域でブロックサイズ制御をするデモが公開されています。</p>
         </section>
 
         <section class="section--conclusion" id="conclusion">
