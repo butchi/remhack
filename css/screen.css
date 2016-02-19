@@ -184,7 +184,7 @@ article > .heading {
 [class^="subsubsection--"] > .heading {
   margin: 2rem 0 1rem;
 
-  font-size: large;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
